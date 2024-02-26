@@ -1,11 +1,7 @@
-require('dotenv').config()
-const express= require('express')
-const app=express()
-const PORT=process.env.PORT || 3000
+import connectDB from './db/index.js'
+import dotenv from 'dotenv'
+dotenv.config({
+    path:'/env'
+})
 
-app.get('/',(req,res)=>{
-    res.send('seting up backend')
-})
-app.listen(PORT,()=>{
-    console.log(`app is listening on port ${PORT}`);
-})
+connectDB()
