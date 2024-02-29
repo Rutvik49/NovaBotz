@@ -21,6 +21,10 @@ db.Sequelize= Sequelize
 db.sequelize = sequelize
 
 db.users = require('./user.model.js')(sequelize,DataTypes)
+db.orders = require('./order.model.js')(sequelize,DataTypes)
+
+db.users.hasMany(db.orders,{foreignKey : 'created_by'})
+db.orders.belongsTo(db.users,{foreignKey : 'created_by'})
 
 db.sequelize.sync({force:false}).then(()=>{
     console.log('DataBase tables synced');
