@@ -1,11 +1,11 @@
 const express = require('express')
 const cors = require('cors')
-const db = require('./models')
+const {DB,connectDB} = require('./models')
 require('dotenv').config()
 
-const User = db.users
-const Order = db.orders
-
+const User = DB.users
+const Order = DB.orders
+connectDB()
 const app = express()
 var corOption ={
     origin: 'http://localhost:3000'
@@ -19,7 +19,7 @@ app.use(express.urlencoded({extended:true}))
 // test api
 
 app.get('/',async (req,res)=>{
-    const data = await User.create({ firstName: "abhay", lastName: "chaudhary" })
+    const data = await User.create({ firstName: "mantra", lastName: "chaudhary" })
     res.status(200).send(data)
 })
 
