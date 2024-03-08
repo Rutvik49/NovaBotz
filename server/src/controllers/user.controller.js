@@ -53,12 +53,17 @@ const registerUser = asyncHandler(async (req, res) => {
     throw new apiError(400, "All the fields are mandatory..!");
   }
 
-  const existedUser = await User.findOne({
-    where: {
-      email,
-      phoneNo,
-    },
-  });
+  const existedUser =
+    (await User.findOne({
+      where: {
+        email,
+      },
+    })) ||
+    (await User.findOne({
+      where: {
+        phoneNo,
+      },
+    }));
   if (existedUser) {
     throw new apiError(409, "User with email or phoneNo already exist..!");
   }
@@ -69,10 +74,11 @@ const registerUser = asyncHandler(async (req, res) => {
       otp,
     },
   });
-  console.log(verifyOtp);
   if (!verifyOtp) {
     throw new apiError(401, "Invalid Otp..!");
   }
+
+  const deleteOtp = await OtpTab.destroy({ where: { email } });
 
   const createdUser = await User.create({
     firstName: firstName || "",
@@ -87,6 +93,7 @@ const registerUser = asyncHandler(async (req, res) => {
       "Something went wrong while registering the user..!"
     );
   }
+  let deletePasswordFromResponse = delete createdUser.dataValues.password;
   return res
     .status(201)
     .json(new apiResponse(200, createdUser, "User registered successfully..!"));
