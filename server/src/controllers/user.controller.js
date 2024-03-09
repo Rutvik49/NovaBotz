@@ -3,9 +3,32 @@ const { DB } = require("../models/index.js");
 const otpGenerator = require("otp-generator");
 const { apiError } = require("../utils/apiError.js");
 const { apiResponse } = require("../utils/apiResponse.js");
+const Op = require("sequelize").Op;
+const jwt = require("jsonwebtoken");
+const {
+  encryptPassword,
+  comparePassword,
+} = require("../utils/passwordManager.js");
 let User = DB.users;
 let OtpTab = DB.otptabs;
 
+const generateAuthToken = async (user) => {
+  try {
+    const token = await jwt.sign(
+      { id: user.user_id },
+      process.env.JWT_TOKEN_SECRET,
+      {
+        expiresIn: "1h",
+      }
+    );
+    return token;
+  } catch (error) {
+    console.log(error);
+    throw new apiError(500, "Something went wrong while generatig token..!");
+  }
+};
+
+// --------send otp function--------
 const sendOTP = asyncHandler(async (req, res) => {
   const { email } = req.body;
   const checkUserPresent = await User.findOne({
@@ -14,7 +37,7 @@ const sendOTP = asyncHandler(async (req, res) => {
     },
   });
   if (checkUserPresent) {
-    throw new apiError(401, "User is Already Registered");
+    throw new apiError(401, "User is already registered");
   }
 
   // ****************** generating otp and querying it into otp table **********************
@@ -42,28 +65,26 @@ const sendOTP = asyncHandler(async (req, res) => {
   if (!createOtp) {
     throw new apiError(500, "Something went wrong while sending the otp..!");
   }
+
   return res
     .status(201)
-    .json(new apiResponse(200, createOtp, "otp sent successfully..!"));
+    .json(new apiResponse(200, createOtp, "Otp sent successfully..!"));
 });
 
+// --------register user function--------
 const registerUser = asyncHandler(async (req, res) => {
   const { firstName, lastName, email, phoneNo, password, otp } = req.body;
   if (!email || !phoneNo || !password || !otp) {
     throw new apiError(400, "All the fields are mandatory..!");
   }
-
-  const existedUser =
-    (await User.findOne({
-      where: {
-        email,
+  const existedUser = await User.findOne({
+    where: {
+      [Op.or]: {
+        email: email || "",
+        phoneNo: phoneNo || "",
       },
-    })) ||
-    (await User.findOne({
-      where: {
-        phoneNo,
-      },
-    }));
+    },
+  });
   if (existedUser) {
     throw new apiError(409, "User with email or phoneNo already exist..!");
   }
@@ -78,14 +99,12 @@ const registerUser = asyncHandler(async (req, res) => {
     throw new apiError(401, "Invalid Otp..!");
   }
 
-  const deleteOtp = await OtpTab.destroy({ where: { email } });
-
   const createdUser = await User.create({
     firstName: firstName || "",
     lastName: lastName || "",
     email,
     phoneNo,
-    password,
+    password: await encryptPassword(password),
   });
   if (!createdUser) {
     throw new apiError(
@@ -93,10 +112,57 @@ const registerUser = asyncHandler(async (req, res) => {
       "Something went wrong while registering the user..!"
     );
   }
+
   let deletePasswordFromResponse = delete createdUser.dataValues.password;
+  const deleteOtpFromDB = await OtpTab.destroy({ where: { email } });
+
+  const authToken = await generateAuthToken(createdUser);
+  const options = {
+    httpOnly: true,
+    secure: true,
+  };
+
   return res
     .status(201)
+    .cookie("authToken", authToken, options)
     .json(new apiResponse(200, createdUser, "User registered successfully..!"));
 });
 
-module.exports = { sendOTP, registerUser };
+// --------login user function--------
+const loginUser = asyncHandler(async (req, res) => {
+  const { email, phoneNo, password } = req.body;
+  if (!(email || phoneNo) || !password) {
+    throw new apiError(400, "All the fields are mandatory..!");
+  }
+
+  const user = await User.findOne({
+    where: {
+      [Op.or]: {
+        email: email || "",
+        phoneNo: phoneNo || "",
+      },
+    },
+  });
+  if (!user) {
+    throw new apiError(401, "User does not exist..!");
+  }
+
+  const isPasswordValid = await comparePassword(password, user.password);
+  if (!isPasswordValid) {
+    throw new apiError(409, "Invalid credentials..!");
+  }
+
+  let deletePasswordFromResponse = delete user.dataValues.password;
+  const authToken = await generateAuthToken(user);
+  const options = {
+    httpOnly: true,
+    secure: true,
+  };
+
+  return res
+    .status(200)
+    .cookie("authToken", authToken, options)
+    .json(new apiResponse(200, user, "User logged in successfully..!"));
+});
+
+module.exports = { sendOTP, registerUser, loginUser };
