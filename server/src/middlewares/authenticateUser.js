@@ -13,11 +13,11 @@ const verifyJWT = asyncHandler(async (req, _, next) => {
       throw new apiError(401, "Unauthorized request..!");
     }
     const decodedToken = await jwt.verify(token, process.env.JWT_TOKEN_SECRET);
-    const user = await User.findOne({ where: { id: decodedToken?.id } });
+    const user = await User.findOne({ where: { user_id: decodedToken?.id } });
     if (!user) {
       throw new apiError(401, "Invalid Access Token..!");
     }
-    req.body = user;
+    req.user = user;
     next();
   } catch (error) {
     throw new apiError(401, error?.message || "Invalid Access Token..!");

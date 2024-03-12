@@ -3,10 +3,6 @@ module.exports=(sequelize,DataTypes)=>{
         product_name:{
             type: DataTypes.STRING,
         },
-        created_by:{
-            type: DataTypes.INTEGER,
-            allowNull: false
-        }
     })
     return Order
 }
