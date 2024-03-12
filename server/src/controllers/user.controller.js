@@ -31,13 +31,13 @@ const generateAuthToken = async (user) => {
 // --------send otp function--------
 const sendOTP = asyncHandler(async (req, res) => {
   const { email } = req.body;
-  const checkUserPresent = await User.findOne({
+  const checkSentOtp = await OtpTab.findOne({
     where: {
       email,
     },
   });
-  if (checkUserPresent) {
-    throw new apiError(401, "User is already registered");
+  if (checkSentOtp) {
+    throw new apiError(401, "Otp already sent..!");
   }
 
   // ****************** generating otp and querying it into otp table **********************
@@ -63,7 +63,7 @@ const sendOTP = asyncHandler(async (req, res) => {
   const otpPayload = { email, otp };
   const createOtp = await OtpTab.create(otpPayload);
   if (!createOtp) {
-    throw new apiError(500, "Something went wrong while sending the otp..!");
+    throw new apiError(500, "Something went wrong while creating the otp..!");
   }
 
   return res
