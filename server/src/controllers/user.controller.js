@@ -113,8 +113,8 @@ const registerUser = asyncHandler(async (req, res) => {
     );
   }
 
-  let deletePasswordFromResponse = delete createdUser.dataValues.password;
-  const deleteOtpFromDB = await OtpTab.destroy({ where: { email } });
+  delete createdUser.dataValues.password;
+  await OtpTab.destroy({ where: { email } });
 
   const authToken = await generateAuthToken(createdUser);
   const options = {
@@ -152,7 +152,7 @@ const loginUser = asyncHandler(async (req, res) => {
     throw new apiError(409, "Invalid credentials..!");
   }
 
-  let deletePasswordFromResponse = delete user.dataValues.password;
+  delete user.dataValues.password;
   const authToken = await generateAuthToken(user);
   const options = {
     httpOnly: true,
@@ -165,4 +165,37 @@ const loginUser = asyncHandler(async (req, res) => {
     .json(new apiResponse(200, user, "User logged in successfully..!"));
 });
 
-module.exports = { sendOTP, registerUser, loginUser };
+// --------update user function--------
+const updateUser = asyncHandler(async (req, res) => {
+  const { firstName, lastName, phoneNo } = req.body;
+
+  const updateUser = await User.update(
+    {
+      firstName,
+      lastName,
+      phoneNo,
+    },
+    {
+      where: {
+        user_id: req.user.user_id,
+      },
+    }
+  );
+  if (!updateUser) {
+    throw new apiError(500, "Something went wrong while updating the user..!");
+  }
+
+  const getUser = await User.findOne({
+    where: { user_id: req.user.user_id },
+  });
+  if (!getUser) {
+    throw new apiError(500, "Something went wrong while updating the user..!");
+  }
+  delete getUser.dataValues.password;
+
+  return res
+    .status(200)
+    .json(new apiResponse(200, getUser, "User updated successfully..!"));
+});
+
+module.exports = { sendOTP, registerUser, loginUser, updateUser };
