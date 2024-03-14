@@ -14,6 +14,7 @@ DB.users = require("./user.model.js")(sequelize, DataTypes);
 DB.orders = require("./order.model.js")(sequelize, DataTypes);
 DB.otptabs = require("./otp.model.js")(sequelize, DataTypes);
 DB.address = require("./address.model.js")(sequelize, DataTypes);
+DB.products = require("./product.model.js")(sequelize, DataTypes);
 
 DB.users.hasMany(DB.orders, { foreignKey: "created_by" });
 DB.orders.belongsTo(DB.users, { foreignKey: "created_by" });
