@@ -18,9 +18,11 @@ app.use(cookieParser());
 // routes import
 const userRouter = require("./routes/user.routes.js");
 const addressRouter = require("./routes/address.routes.js");
+const productRouter = require("./routes/product.routes.js");
 
 // routes declaration
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/users", addressRouter);
+app.use("/api/v1/products", productRouter);
 
 module.exports = { app };

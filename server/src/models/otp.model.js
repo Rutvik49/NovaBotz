@@ -1,19 +1,23 @@
 const { sendOtpEmail } = require("../utils/sendEmail");
 module.exports = (sequelize, DataTypes) => {
-  const OtpTab = sequelize.define("otptab", {
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        isEmail: true,
+  const OtpTab = sequelize.define(
+    "otptab",
+    {
+      email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          isEmail: true,
+        },
+        trim: true,
       },
-      trim: true,
+      otp: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
     },
-    otp: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-  });
+    { timestamps: false }
+  );
 
   OtpTab.beforeCreate(async (otptab) => {
     try {
