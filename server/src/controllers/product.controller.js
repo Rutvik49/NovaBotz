@@ -34,4 +34,29 @@ const createProduct = asyncHandler(async (req, res) => {
     .status(201)
     .json(new apiResponse(200, "Product created successfully..!"));
 });
-module.exports = { createProduct };
+
+const getProduct = asyncHandler(async (req, res) => {
+  const products = await Product.findAll();
+  if (!products) {
+    throw new apiError(500, "We are facing error in fetching products..!");
+  }
+
+  return res
+    .status(201)
+    .json(new apiResponse(200, products, "Products fetched successfully..!"));
+});
+
+const removeProduct = asyncHandler(async (req, res) => {
+  const productId = req.params.id;
+  const products = await Product.destroy({ where: { id: productId } });
+  console.log(products);
+  if (!products) {
+    throw new apiError(500, "We are facing error in deleting product..!");
+  }
+
+  return res
+    .status(201)
+    .json(new apiResponse(200, "Product deleted successfully..!"));
+});
+
+module.exports = { createProduct, getProduct, removeProduct };
