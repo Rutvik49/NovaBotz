@@ -12,14 +12,19 @@ const createProduct = asyncHandler(async (req, res) => {
   }
 
   const imagesLocalPath = req.files;
-  const uploaded = await uploadOnCloudnary(imagesLocalPath[0].path);
-  console.log(uploaded);
+  let images = [];
+  for (let i = 0; i < imagesLocalPath.length; i++) {
+    const cloudUpload = await uploadOnCloudnary(imagesLocalPath[i].path);
+    images.push(cloudUpload.url);
+    // console.log(cloudUpload);
+  }
+  console.log(images);
 
   const createProduct = await Product.create({
     title,
     description,
     price,
-    // images
+    images,
   });
   if (!createProduct) {
     throw new apiError(500, "Something went wrong while adding the product..!");
