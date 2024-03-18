@@ -16,11 +16,14 @@ DB.otptabs = require("./otp.model.js")(sequelize, DataTypes);
 DB.address = require("./address.model.js")(sequelize, DataTypes);
 DB.products = require("./product.model.js")(sequelize, DataTypes);
 
-DB.users.hasMany(DB.orders, { foreignKey: "created_by" });
-DB.orders.belongsTo(DB.users, { foreignKey: "created_by" });
+DB.users.hasMany(DB.orders, { foreignKey: "user_id" });
+DB.orders.belongsTo(DB.users, { foreignKey: "user_id" });
 
 DB.users.hasOne(DB.address, { foreignKey: "user_id" });
 DB.address.belongsTo(DB.users, { foreignKey: "user_id" });
+
+DB.products.hasMany(DB.orders, { foreignKey: "product_id" });
+DB.orders.belongsTo(DB.products, { foreignKey: "product_id" });
 
 const connectDB = async () => {
   await sequelize
