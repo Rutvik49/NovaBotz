@@ -2,6 +2,11 @@ module.exports = (sequelize, DataTypes) => {
   const Product = sequelize.define(
     "product",
     {
+      product_id: {
+        primaryKey: true,
+        type: DataTypes.BIGINT,
+        autoIncrement: true
+      },
       title: {
         type: DataTypes.STRING,
         trim: true,
