@@ -13,8 +13,8 @@ function Footer() {
                 </h2>
                 <ul className="text-gray-500 dark:text-gray-400 font-medium">
                   <li className="mb-4">
-                    <a href="https://flowbite.com/" className="hover:underline">
-                      Flowbite
+                    <a href="" className="hover:underline">
+                      NovaBotz
                     </a>
                   </li>
                   <li>
@@ -34,7 +34,7 @@ function Footer() {
                 <ul className="text-gray-500 dark:text-gray-400 font-medium">
                   <li className="mb-4">
                     <a
-                      href="https://github.com/themesberg/flowbite"
+                      href="https://github.com/Rutvik49"
                       className="hover:underline "
                     >
                       Github
@@ -42,7 +42,7 @@ function Footer() {
                   </li>
                   <li>
                     <a
-                      href="https://discord.gg/4eeurUVvTy"
+                      href=""
                       className="hover:underline"
                     >
                       Discord
@@ -81,7 +81,7 @@ function Footer() {
           <div className="flex justify-between sm:justify-center px-5 sm:w-3/4 mx-auto">
             <span className="text-sm text-gray-500 sm:text-center sm:w-1/2">
               © 2023{" "}
-              <a href="https://flowbite.com/" className="hover:underline">
+              <a href="" className="hover:underline">
                 NovaBotz™
               </a>
               . All Rights Reserved.
