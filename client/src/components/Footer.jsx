@@ -5,8 +5,15 @@ function Footer() {
     <div>
       <footer className="bg-mainBlue text-white">
         <div className="mx-auto  max-w-screen-xl py-6 sm:py-8">
-          <div className="flex justify-center">
-            <div className="grid grid-cols-3 px-5 gap-8 sm:gap-9 sm:grid-cols-3 sm:w-1/3">
+          <div className="flex justify-center flex-col sm:flex-row items-center">
+            <div className="sm:w-1/3 ">
+              <img
+                src="images/logo.svg"
+                className="w-20 sm:w-24 pr-2 px-2 float-left"
+                alt="Logo"
+              />
+            </div>
+            <div className=" grid grid-cols-3 px-5 gap-8 sm:gap-9 sm:grid-cols-3 sm:w-1/2 justify-items-center">
               <div>
                 <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
                   Resources
@@ -41,10 +48,7 @@ function Footer() {
                     </a>
                   </li>
                   <li>
-                    <a
-                      href=""
-                      className="hover:underline"
-                    >
+                    <a href="" className="hover:underline">
                       Discord
                     </a>
                   </li>
@@ -67,13 +71,6 @@ function Footer() {
                   </li>
                 </ul>
               </div>
-            </div>
-            <div className="sm:w-1/4 ">
-              <img
-                src="images/logo.svg"
-                className="w-24 pr-2 px-2 float-right"
-                alt="Logo"
-              />
             </div>
           </div>
           {/* lower Footer */}
