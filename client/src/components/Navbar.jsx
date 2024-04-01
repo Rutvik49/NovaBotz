@@ -7,10 +7,10 @@ const Navbar = () => {
     <>
       <header className="shadow sticky z-50 bottom-0">
         <nav className="flex sm:justify-center bg-mainBlue justify-between ">
-          <NavLink to="/" className="sm:w-1/4">
+          <NavLink to="/" className="sm:w-1/3">
             <img src="images/logo.svg" alt="logo" className="w-24 px-5 py-3" />
           </NavLink>
-          <div className="hidden sm:w-1/3 sm:flex  sm:justify-between sm:items-center">
+          <div className="hidden sm:w-1/2 sm:flex  sm:justify-between sm:items-center">
             <NavLink
               to="/"
               className={({ isActive }) =>
