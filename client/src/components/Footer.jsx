@@ -5,7 +5,7 @@ function Footer() {
     <div>
       <footer className="bg-mainBlue text-white">
         <div className="mx-auto  max-w-screen-xl py-6 sm:py-8">
-          <div className="flex justify-center flex-col sm:flex-row items-center">
+          <div className="flex justify-center flex-col sm:flex-row items-center sm:items-start">
             <div className="sm:w-1/3 ">
               <img
                 src="images/logo.svg"
@@ -13,9 +13,9 @@ function Footer() {
                 alt="Logo"
               />
             </div>
-            <div className=" grid grid-cols-3 px-5 gap-8 sm:gap-9 sm:grid-cols-3 sm:w-1/2 justify-items-center">
+            <div className=" mt-5 sm:mt-0 grid grid-cols-3 px-5 gap-8 sm:gap-9 sm:grid-cols-3 sm:w-1/2 justify-items-center text-center sm:text-right">
               <div>
-                <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+                <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase">
                   Resources
                 </h2>
                 <ul className="text-gray-500 dark:text-gray-400 font-medium">
@@ -74,19 +74,19 @@ function Footer() {
             </div>
           </div>
           {/* lower Footer */}
-          <hr className="my-6 border-gray-200 mx-auto dark:border-gray-700 sm:my-8 sm:w-3/4" />
-          <div className="flex justify-between sm:justify-center px-5 sm:w-3/4 mx-auto">
-            <span className="text-sm text-gray-500 sm:text-center sm:w-1/2">
+          <hr className="my-6 border-gray-200 mx-auto dark:border-gray-700 sm:my-8 sm:w-5/6" />
+          <div className="flex justify-between sm:justify-center px-2 mx-auto sm:text-right">
+            <span className="text-sm text-bottomWhite sm:text-left sm:w-1/2">
               © 2023{" "}
-              <a href="" className="hover:underline">
+              <a href="" className="hover:underline ">
                 NovaBotz™
               </a>
               . All Rights Reserved.
             </span>
-            <div className="flex mt-4 sm:justify-center sm:mt-0 sm:w-1/2">
+            <div className="flex mt-4 sm:justify-end sm:mt-0 sm:w-1/3">
               <a
                 href="#"
-                className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+                className="text-bottomWhite hover:text-gray-900 dark:hover:text-white"
               >
                 <svg
                   className="w-4 h-4"
@@ -105,7 +105,7 @@ function Footer() {
               </a>
               <a
                 href="#"
-                className="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5"
+                className="text-bottomWhite hover:text-gray-900 dark:hover:text-white ms-5"
               >
                 <svg
                   className="w-4 h-4"
@@ -120,7 +120,7 @@ function Footer() {
               </a>
               <a
                 href="#"
-                className="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5"
+                className="text-bottomWhite hover:text-gray-900 dark:hover:text-white ms-5"
               >
                 <svg
                   className="w-4 h-4"
@@ -139,7 +139,7 @@ function Footer() {
               </a>
               <a
                 href="#"
-                className="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5"
+                className="text-bottomWhite hover:text-gray-900 dark:hover:text-white ms-5"
               >
                 <svg
                   className="w-4 h-4"

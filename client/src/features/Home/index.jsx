@@ -13,11 +13,11 @@ function Home() {
           </div>
         </div>
         <div className="flex flex-col sm:justify-start justify-center items-center sm:items-start sm:w-1/3 mt-7 sm:mt-0">
-          <div className="mb-4 pl-4 text-3xl font-extrabold tracking-tight leading-none text-mainBlue sm:text-left text-center">
+          <div className="mb-4 px-4 sm:pl-4 sm:px-0  text-3xl font-extrabold tracking-tight leading-none text-mainBlue sm:text-left text-center">
             Embrace the future of electronics with us.
           </div>
           <div>
-            <p className="mb-4 pl-4 font-light text-mainBlue sm:text-left text-center">
+            <p className="mb-4  px-4 sm:pl-4 sm:px-0 font-light text-mainBlue sm:text-left text-center">
               Welcome to our premier electronics emporium, where innovation
               meets convenience. Discover cutting-edge gadgets and tech
               essentials curated to elevate your digital lifestyle.
