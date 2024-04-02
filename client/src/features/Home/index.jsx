@@ -8,7 +8,11 @@ function Home() {
         <div className="flex justify-center sm:justify-end items-center sm:w-1/2">
           <div className="sm:max-w-lg max-w-sm max-h-full ">
             <Carousel autoSlide={true}>
-              {[...slides.map((s) => <img src={s} className="sm:min-w-full	 sm:min-h-80"/>)]}
+              {[
+                ...slides.map((s) => (
+                  <img src={s} className="sm:min-w-full	 sm:min-h-80" />
+                )),
+              ]}
             </Carousel>
           </div>
         </div>
