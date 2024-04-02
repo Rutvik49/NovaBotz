@@ -2,7 +2,9 @@ import React from "react";
 import Lottie from "react-lottie";
 import animationData from "../lotties/soon.json";
 function Blogs() {
-  localStorage.setItem("comingSoon", JSON.stringify(animationData));
+  if (!localStorage.getItem("comingSoon")) {
+    localStorage.setItem("comingSoon", JSON.stringify(animationData));
+  }
   const data = JSON.parse(localStorage.getItem("comingSoon"));
 
   const defaultOptions = {
