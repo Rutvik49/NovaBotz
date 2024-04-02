@@ -5,7 +5,7 @@ import { useState } from "react";
 const Navbar = () => {
   return (
     <>
-      <header className="shadow sticky z-50 bottom-0">
+      <header className="shadow-lg sticky z-50 ">
         <nav className="flex sm:justify-center bg-mainBlue justify-between ">
           <NavLink to="/" className="sm:w-1/3">
             <img src="images/logo.svg" alt="logo" className="w-24 px-5 py-3" />

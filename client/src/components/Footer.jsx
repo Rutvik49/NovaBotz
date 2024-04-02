@@ -73,17 +73,34 @@ function Footer() {
               </div>
             </div>
           </div>
+          <div className="mt-2 flex">
+            <div className="m-auto">
+              <span className="text-xs text-bottomWhite">
+                Designed with ❤️ by{" "}
+                <a className="text-lg underline text-white" href="">
+                  Nishant
+                </a>{" "}
+                & Developed by{" "}
+                <a
+                  className="text-lg underline text-white"
+                  href="https://github.com/Rutvik49"
+                >
+                  Rutvik
+                </a>
+              </span>
+            </div>
+          </div>
           {/* lower Footer */}
-          <hr className="my-6 border-gray-200 mx-auto dark:border-gray-700 sm:my-8 sm:w-5/6" />
-          <div className="flex justify-between sm:justify-center px-2 mx-auto sm:text-right">
-            <span className="text-sm text-bottomWhite sm:text-left sm:w-1/2">
-              © 2023{" "}
-              <a href="" className="hover:underline ">
+          <hr className="my-5 border-gray-200 mx-auto dark:border-gray-700 sm:my-8 sm:w-5/6" />
+          <div className="flex justify-between sm:justify-center px-2 mx-auto align-middle sm:text-right">
+            <span className="text-sm text-bottomWhite text-wrap sm:text-left sm:w-1/2">
+              © 2024{" "}
+              <a href="" className="hover:underline text-wrap">
                 NovaBotz™
               </a>
               . All Rights Reserved.
             </span>
-            <div className="flex mt-4 sm:justify-end sm:mt-0 sm:w-1/3">
+            <div className="flex mt-1 sm:justify-end sm:mt-0 sm:w-1/3">
               <a
                 href="#"
                 className="text-bottomWhite hover:text-gray-900 dark:hover:text-white"
@@ -158,6 +175,16 @@ function Footer() {
               </a>
             </div>
           </div>
+          {/* <hr className="my-6 border-gray-200 mx-auto dark:border-gray-700 sm:my-8 sm:w-5/6" /> */}
+
+          {/* <div className="flex flex-col sm:flex-row justify-between sm:justify-center px-2">
+            <span className="text-sm text-bottomWhite text-center sm:text-left  sm:w-1/2">
+              Designed with ❤️ by <a href="http://">Nishant Chaudhary</a>
+            </span>
+            <span className="text-sm text-bottomWhite text-center sm:text-right sm:w-1/3">
+            Developed with ❤️ by <a href="http://">Rutvik Chaudhary</a>
+            </span>
+          </div> */}
         </div>
       </footer>
     </div>

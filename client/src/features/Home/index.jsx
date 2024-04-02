@@ -1,7 +1,9 @@
 import Carousel from "./Carousel";
 const slides = ["images/b2.svg", "images/b1.svg", "images/b3.svg"];
+import ItemCard from "../../components/ItemCard";
 
 function Home() {
+  let a = [1, 2, 3, 4, 5, 6];
   return (
     <div className="flex flex-col justify-center items-center">
       <div className="flex flex-col sm:flex-row-reverse justify-center items-center my-12">
@@ -37,7 +39,20 @@ function Home() {
           </div>
         </div>
       </div>
-      <div></div>
+      <div className="bg-bottomWhite">
+        <div className="mt-5 mb-3">
+          <h1 className="text-2xl text-center text-mainBlue font-semibold ">
+            Featured Products
+          </h1>
+        </div>
+        <div className="flex flex-wrap justify-center items-center mb-5">
+          {a.map(() => (
+            <div className="mx-2 w-40 sm:w-1/4">
+              <ItemCard />
+            </div>
+          ))}
+        </div>
+      </div>
       <div></div>
       <div></div>
     </div>
