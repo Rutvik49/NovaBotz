@@ -2,10 +2,10 @@ import React from "react";
 
 function ItemCard() {
   return (
-    <div className="bg-white rounded-xl sm:w-7/8 my-2 sm:mx-auto">
+    <div className="bg-aliceBlue rounded-xl sm:w-7/8 my-2 sm:mx-auto">
       <a href="#" className="flex flex-col p-3 justify-center">
         <div className="m-auto">
-          <img src="images/item_1.png" alt="" />
+          <img src="images/item_1.png" className="" alt="" />
         </div>
         <div className="p-1">
           <h2 className="font-medium text-mainBlue">Line Follower Bot</h2>

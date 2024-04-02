@@ -39,7 +39,7 @@ function Home() {
           </div>
         </div>
       </div>
-      <div className="bg-bottomWhite">
+      <div className="bg-snowWhite">
         <div className="mt-5 mb-3">
           <h1 className="text-2xl text-center text-mainBlue font-semibold ">
             Featured Products

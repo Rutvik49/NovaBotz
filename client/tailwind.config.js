@@ -6,6 +6,8 @@ export default {
       mainBlue: "#1e5d88",
       lightBlue: "#53dfe6",
       white: "#fff",
+      snowWhite: "#fffafa", // snow white
+      aliceBlue: "#f0f8ff", //alice blue
       btnText: "#333333",
       bottomWhite: "#d5d5d5",
       black: "#000",
