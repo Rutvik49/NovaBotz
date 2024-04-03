@@ -2,7 +2,7 @@ import React from "react";
 
 function ItemCard() {
   return (
-    <div className="bg-aliceBlue rounded-xl sm:w-7/8 my-2 sm:mx-auto">
+    <div className="bg-aliceBlue rounded-xl  sm:w-7/8 my-2 sm:mx-auto">
       <a href="#" className="flex flex-col p-3 justify-center">
         <div className="m-auto">
           <img src="images/item_1.png" className="" alt="" />
@@ -10,10 +10,10 @@ function ItemCard() {
         <div className="p-1">
           <h2 className="font-medium text-mainBlue">Line Follower Bot</h2>
           <p className="text-sm text-mainBlue">with extra speed..!</p>
-          <div className="flex justify-between items-center">
-            <div className="text-2xl font-bold text-mainBlue">$39</div>
-            <div class="w-10 h-10 flex items-center justify-center rounded-full bg-mainBlue p-2 hover:bg-lightBlue hover:text-black">
-              <span className="text-white hover:text-black text-3xl">+</span>
+          <div className="flex justify-between items-center mt-2">
+            <div className="text-2xl font-semibold text-mainBlue">$39</div>
+            <div class="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full bg-mainBlue p-2 hover:bg-lightBlue hover:text-mainBlue">
+              <span className="text-white text-3xl hover:text-mainBlue">+</span>
             </div>
           </div>
         </div>
