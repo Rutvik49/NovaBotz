@@ -63,8 +63,8 @@ function Home() {
             </h1>
           </div>
           {b.map((b) => (
-            <div className="flex justify-center flex-col sm:justify-between sm:flex-row mx-12 mb-5 rounded-2xl bg-aliceBlue w-80 sm:w-3/4">
-              <div className="mx-4 sm:mx-0 flex justify-center sm:justify-start items-center sm:w-1/2">
+            <div className="flex justify-center flex-col  sm:flex-row mx-12 mb-5 rounded-2xl bg-aliceBlue w-80 sm:w-5/6">
+              <div className="mx-4 sm:mx-0 flex justify-center  items-center sm:w-1/2">
                 <div className="sm:max-w-lg py-4 sm:p-4">
                   <Carousel autoSlide={true}>
                     {[
