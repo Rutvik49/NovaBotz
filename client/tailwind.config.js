@@ -11,6 +11,10 @@ export default {
       btnText: "#333333",
       bottomWhite: "#d5d5d5",
       black: "#000",
+      Antiflesh: "#fafafa",
+      Gainsboro: "#f1eff2",
+      Offwhite: "#fbfbfb",
+      lavory: "#fffff0",
       primary: {
         50: "#eff6ff",
         100: "#dbeafe",

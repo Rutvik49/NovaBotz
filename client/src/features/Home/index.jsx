@@ -1,9 +1,11 @@
 import Carousel from "./Carousel";
 const slides = ["images/b2.svg", "images/b1.svg", "images/b3.svg"];
+const blogs = ["images/blog1.png", "images/blog2.png"];
 import ItemCard from "../../components/ItemCard";
 
 function Home() {
   let a = [1, 2, 3, 4, 5, 6];
+  let b = [1, 2];
   return (
     <div className="flex flex-col justify-center items-center">
       <div className="flex flex-col sm:flex-row-reverse justify-center items-center my-12">
@@ -53,7 +55,42 @@ function Home() {
           ))}
         </div>
       </div>
-      <div></div>
+      <div className="w-full">
+        <div className="flex flex-col justify-center items-center bg-Gainsboro">
+          <div className="my-5">
+            <h1 className="text-2xl text-center text-mainBlue font-semibold ">
+              Top Blogs
+            </h1>
+          </div>
+          {b.map((b) => (
+            <div className="flex justify-center flex-col sm:justify-between sm:flex-row mx-12 mb-5 rounded-2xl bg-aliceBlue w-80 sm:w-3/4">
+              <div className="mx-4 sm:mx-0 flex justify-center sm:justify-start items-center sm:w-1/2">
+                <div className="sm:max-w-lg py-4 sm:p-4">
+                  <Carousel autoSlide={true}>
+                    {[
+                      ...blogs.map((s) => (
+                        <img src={s} className="sm:min-w-full	 sm:min-h-72" />
+                      )),
+                    ]}
+                  </Carousel>
+                </div>
+              </div>
+              <div className="flex flex-col sm:p-4 sm:justify-start justify-center items-center sm:items-start sm:w-1/2">
+                <div className="mb-4 px-4 sm:pr-4 sm:px-0  text-3xl font-extrabold tracking-tight leading-none text-mainBlue sm:text-left text-center">
+                  Electronics - The easy way..!
+                </div>
+                <div>
+                  <p className="mb-4  px-4 sm:pr-4 sm:px-0 font-light text-mainBlue sm:text-left text-center">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Quasi quaerat perspiciatis consectetur aspernatur eveniet a
+                    voluptas, ullam corrupti.
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
       <div></div>
     </div>
   );
