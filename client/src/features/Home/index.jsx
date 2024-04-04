@@ -6,9 +6,10 @@ import ItemCard from "../../components/ItemCard";
 function Home() {
   let a = [1, 2, 3, 4, 5, 6];
   let b = [1, 2];
+  let logedIn = true;
   return (
     <div className="flex flex-col justify-center items-center">
-      <div className="flex flex-col sm:flex-row-reverse justify-center items-center my-12">
+      <div className="flex flex-col sm:flex-row-reverse justify-center items-center my-8 sm:my-12">
         <div className="flex justify-center sm:justify-end items-center sm:w-1/2">
           <div className="sm:max-w-lg max-w-sm max-h-full ">
             <Carousel autoSlide={true}>
@@ -81,9 +82,12 @@ function Home() {
                 </div>
                 <div>
                   <p className="mb-4  px-4 sm:pr-4 sm:px-0 font-light text-mainBlue sm:text-left text-center">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Quasi quaerat perspiciatis consectetur aspernatur eveniet a
-                    voluptas, ullam corrupti.
+                    Electronics is the science of controlling electrical energy,
+                    often through the manipulation of electrons in semiconductor
+                    devices. It's powering everything from cand automate tasks.
+                    Whether it's a simple flashlight or a complex computer,
+                    electronics play a crucial role in our daily lives, making
+                    tasks easier, faster, and more efficient.
                   </p>
                 </div>
               </div>
@@ -91,7 +95,20 @@ function Home() {
           ))}
         </div>
       </div>
-      <div></div>
+      {logedIn ? (
+        <div className="bg-lavory w-full flex justify-center">
+          <div className="my-5">
+            <a
+              href="/"
+              className="text-xl text-center text-mainBlue underline font-medium"
+            >
+              Let's Explore
+            </a>
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 }
