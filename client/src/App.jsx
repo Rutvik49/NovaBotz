@@ -8,7 +8,7 @@ import { Navigate, Route, Routes, BrowserRouter } from "react-router-dom";
 function App() {
   return (
     <>
-      <BrowserRouter className="h-dvh">
+      <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Layout />}>
             <Route exact path="" element={<Home />} />

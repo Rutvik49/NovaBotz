@@ -49,8 +49,7 @@ const Navbar = () => {
             </button>
           </div>
           <div className="sm:hidden flex  py-2 justify-between">
-            <img src="images/searchIco.svg" alt="search" className="px-3" />
-            <img src="images/cart.svg" alt="search" className="px-3" />
+            <img src="images/cart.svg" alt="search" className="px-3 w-16" />
           </div>
         </nav>
       </header>
